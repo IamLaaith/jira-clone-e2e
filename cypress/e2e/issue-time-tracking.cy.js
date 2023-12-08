@@ -17,7 +17,7 @@ describe('Time tracking', () => {
     const timeRemaining = 5;
 
 
-    it.only('Assignment 2. Task 1. Time estimation: Add, edit, remove', () => {
+    it('Assignment 2. Task 1. Time estimation: Add, edit, remove', () => {
 
 
 
