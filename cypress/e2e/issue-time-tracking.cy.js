@@ -94,7 +94,7 @@ describe('Time tracking', () => {
 
     });
 
-    it.only('Assignment 2. Time Logging: Add, remove', () => {
+    it('Assignment 2. Time Logging: Add, remove', () => {
 
 
 
@@ -163,7 +163,7 @@ describe('Time tracking', () => {
         cy.contains("No time logged").should('be.visible')
         cy.contains(`${timeSpent}${'h logged'}`).should('not.exist');
         cy.contains(`${timeRemaining}${'h remaining'}`).should('not.exist');
-        
+
         cy.contains(`${initialEstimateTime}${'h estimated'}`).should('be.visible');
 
 
