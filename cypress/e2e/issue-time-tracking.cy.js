@@ -42,16 +42,13 @@ describe('Time tracking', () => {
         cy.get('[data-testid="list-issue"]');
         cy.contains(randomTitle).click();
 
+        cy.get('[data-testid="modal:issue-details"]')
+            .within(() => {
         cy.get('input[placeholder="Number"]').type(initialEstimateTime);
 
-        cy.get('[data-testid="icon:close"]').click();
-
-        cy.get('[data-testid="list-issue"]');
-        cy.contains(randomTitle).click();
-
-        cy.get('[data-testid="modal:issue-details"]').should('be.visible');
         cy.contains(`${initialEstimateTime}${'h estimated'}`).should('be.visible');
 
+        });  
 
         cy.get('[data-testid="icon:close"]').click();
 
@@ -64,15 +61,14 @@ describe('Time tracking', () => {
         cy.get('[data-testid="list-issue"]');
         cy.contains(randomTitle).click();
 
+        cy.get('[data-testid="modal:issue-details"]')
+            .within(() => {        
         cy.get('input[placeholder="Number"]').clear().type(editEstimateTime);
 
-        cy.get('[data-testid="icon:close"]').click();
-
-        cy.get('[data-testid="list-issue"]');
-        cy.contains(randomTitle).click();
-
-        cy.get('[data-testid="modal:issue-details"]').should('be.visible')
         cy.contains(`${editEstimateTime}${'h estimated'}`).should('be.visible');
+
+
+        });  
 
         cy.get('[data-testid="icon:close"]').click();
 
@@ -81,18 +77,20 @@ describe('Time tracking', () => {
 
         //----------------------Start removing estimated time----------------------------------------------
 
+
         cy.get('[data-testid="list-issue"]');
         cy.contains(randomTitle).click();
 
+        cy.get('[data-testid="modal:issue-details"]')
+            .within(() => {        
         cy.get('input[placeholder="Number"]').clear();
 
-        cy.get('[data-testid="icon:close"]').click();
-
-        cy.get('[data-testid="list-issue"]');
-        cy.contains(randomTitle).click();
-
-        cy.get('[data-testid="modal:issue-details"]').should('be.visible')
         cy.contains(`${editEstimateTime}${'h estimated'}`).should('not.exist');
+
+
+        });  
+
+        cy.get('[data-testid="icon:close"]').click();
 
         //----------------------End removing estimated time------------------------------------------------
 
