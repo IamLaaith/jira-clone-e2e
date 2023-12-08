@@ -17,7 +17,7 @@ describe('Time tracking', () => {
     const timeRemaining = 5;
 
 
-    it('Assignment 2. Time estimation: Add, edit, remove', () => {
+    it.only('Assignment 2. Task 1. Time estimation: Add, edit, remove', () => {
 
 
 
@@ -49,7 +49,9 @@ describe('Time tracking', () => {
         cy.get('[data-testid="list-issue"]');
         cy.contains(randomTitle).click();
 
-        cy.get('input[placeholder="Number"]').should('have.value', initialEstimateTime);
+        cy.get('[data-testid="modal:issue-details"]').should('be.visible');
+        cy.contains(`${initialEstimateTime}${'h estimated'}`).should('be.visible');
+
 
         cy.get('[data-testid="icon:close"]').click();
 
@@ -69,7 +71,8 @@ describe('Time tracking', () => {
         cy.get('[data-testid="list-issue"]');
         cy.contains(randomTitle).click();
 
-        cy.get('input[placeholder="Number"]').should('have.value', editEstimateTime);
+        cy.get('[data-testid="modal:issue-details"]').should('be.visible')
+        cy.contains(`${editEstimateTime}${'h estimated'}`).should('be.visible');
 
         cy.get('[data-testid="icon:close"]').click();
 
@@ -88,13 +91,14 @@ describe('Time tracking', () => {
         cy.get('[data-testid="list-issue"]');
         cy.contains(randomTitle).click();
 
-        cy.get('input[placeholder="Number"]').contains(editEstimateTime).should('not.exist');
+        cy.get('[data-testid="modal:issue-details"]').should('be.visible')
+        cy.contains(`${editEstimateTime}${'h estimated'}`).should('not.exist');
 
         //----------------------End removing estimated time------------------------------------------------
 
     });
 
-    it('Assignment 2. Time Logging: Add, remove', () => {
+    it('Assignment 2. Task 2. Time Logging: Add, remove', () => {
 
 
 
